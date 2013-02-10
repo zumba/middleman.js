@@ -142,7 +142,7 @@
             });
         });
         describe('map : method', function(){
-            it('can take a string and be paired with lib', function(){
+            it('takes a string and pairs it with lib', function(){
                 var lookup, originalLib;
 
                 originalLib = {
