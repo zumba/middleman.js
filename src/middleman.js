@@ -1,0 +1,3 @@
+    var Middleman;
+
+    Middleman = function(){};

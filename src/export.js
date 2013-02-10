@@ -1,5 +1,5 @@
     if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) {
-        // exports = module.exports = ProjectName;
+         exports = module.exports = Middleman;
     } else {
-        // this.ProjectName = ProjectName;
+         this.Middleman = Middleman;
     }

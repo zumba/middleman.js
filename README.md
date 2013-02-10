@@ -1,2 +1,1 @@
-Super Awesome Project Readme.md
-===============================
+# middleman.js

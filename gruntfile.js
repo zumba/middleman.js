@@ -14,9 +14,7 @@ module.exports = function(grunt) {
 
         sources : [
             'src/intro.js',
-
-            // add'l packages
-
+            'src/middleman.js',
             'src/export.js',
             'src/outro.js'
         ],
