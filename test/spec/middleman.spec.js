@@ -106,5 +106,40 @@
                 expect(someGlobal).toBe(15);
             });
         });
+        describe('map : context', function() {
+            it('changes the context of the executed method', function(){
+                var someGlobal, originalLib, newContext;
+
+                originalLib = {
+                    blip : function(){
+                        this.second();
+                    },
+                    second : function(){
+                        someGlobal = 'Original Context';
+                    }
+                };
+                newContext = {
+                    second : function(){
+                        someGlobal = 'New Context';
+                    }
+                };
+
+                // control
+                someGlobal = '';
+                originalLib.blip();
+                expect(someGlobal).toBe('Original Context');
+
+                MM.map({
+                    lib : originalLib,
+                    method : 'blip',
+                    context : newContext
+                });
+
+                // test
+                someGlobal = '';
+                originalLib.blip();
+                expect(someGlobal).toBe('New Context');
+            });
+        });
     });
 }(describe, it, expect, Middleman));
