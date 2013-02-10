@@ -1,2 +1,2 @@
-javascript-project-boilerplate
-==============================
+Super Awesome Project Readme.md
+===============================
