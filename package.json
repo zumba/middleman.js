@@ -1,20 +1,22 @@
 {
-  "name": "project-name",
-  "version": "0.0.1",
-  "author": "Stephen Young <young.steveo@gmail.com>",
+  "name": "middleman",
+  "version": "0.1.0",
+  "author": "Stephen Young <stephen.young@zumba.com>",
   "description": "",
   "contributors": [
     {
       "name": "Stephen Young",
-      "email": "young.steveo@gmail.com"
+      "email": "stephen.young@zumba.com"
     }
   ],
   "main": null,
   "repository": {
     "type": "git",
-    "url": "https://github.com/..."
+    "url": "https://github.com/zumba/middleman.js"
   },
-  "keywords": [],
+  "keywords": [
+    "api", "method", "overloading"
+  ],
   "dependencies": { },
   "devDependencies": {
     "grunt": "0.4.0rc4",
