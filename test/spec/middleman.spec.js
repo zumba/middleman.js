@@ -47,6 +47,64 @@
                 // test
                 expect(originalLib.add(2, 3)).toBe(6);
             });
+            it('can return undefined, and Middleman will not try to call the method', function(){
+                var someGlobal, originalLib;
+
+                originalLib = {
+                    add : function(value) { someGlobal += value; }
+                };
+
+                // control
+                someGlobal = 0;
+                originalLib.add(1);
+                originalLib.add(2);
+                originalLib.add(3);
+                expect(someGlobal).toBe(6);
+
+                MM.map({
+                    lib : originalLib,
+                    method : 'add',
+                    filter : function(args) {
+                        // add 1 no matter what
+                        someGlobal++;
+                    }
+                });
+
+                // test
+                someGlobal = 0;
+                originalLib.add(1);
+                originalLib.add(2);
+                originalLib.add(3);
+                expect(someGlobal).toBe(3);
+            });
+            it('has access to the original method', function(){
+                var someGlobal, originalLib;
+
+                originalLib = {
+                    add : function(value) { someGlobal += value; }
+                };
+
+                // control
+                someGlobal = 0;
+                originalLib.add(5);
+                expect(someGlobal).toBe(5);
+
+                MM.map({
+                    lib : originalLib,
+                    method : 'add',
+                    filter : function(args, original) {
+                        var value = args.pop();
+                        original(value);
+                        original(value);
+                        original(value);
+                    }
+                });
+
+                // test
+                someGlobal = 0;
+                originalLib.add(5);
+                expect(someGlobal).toBe(15);
+            });
         });
     });
 }(describe, it, expect, Middleman));
