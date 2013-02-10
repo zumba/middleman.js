@@ -1,5 +1,5 @@
 /**
- * middleman v0.0.1 - 2013-02-10
+ * middleman v0.1.0 - 2013-02-10
  * 
  *
  * Copyright (c) 2013 Zumba Fitness, LLC
