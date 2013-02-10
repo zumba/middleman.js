@@ -2,7 +2,7 @@
  * middleman v0.0.1 - 2013-02-10
  * 
  *
- * Copyright (c) 2013 Stephen Young <stephen.young@zumba.com>
+ * Copyright (c) 2013 Zumba Fitness, LLC
  * Licensed MIT
  */
 ;(function(undefined){
