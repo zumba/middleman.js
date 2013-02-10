@@ -67,11 +67,13 @@
 
             if (filter) {
                 response = filter.call(context, args, original);
-            }
-            if (isArray(response)) {
-                result = original.apply(context, response);
-            } else if (typeof response === 'function') {
-                result = response.call(context, args);
+                if (isArray(response)) {
+                    result = original.apply(context, response);
+                } else if (typeof response === 'function') {
+                    result = response.call(context, args);
+                }
+            } else {
+                result = original.apply(context, args);
             }
             return result;
         };
