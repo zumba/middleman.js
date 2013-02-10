@@ -141,5 +141,28 @@
                 expect(someGlobal).toBe('New Context');
             });
         });
+        describe('map : method', function(){
+            it('can take a string and be paired with lib', function(){
+                var lookup, originalLib;
+
+                originalLib = {
+                    add : function(a, b) { return a + b; }
+                };
+
+                MM.map({
+                    lib : originalLib,
+                    method : 'add',
+                    filter : function(args){
+                        lookup = true;
+                        return args;
+                    }
+                });
+
+                // test
+                lookup = false;
+                expect(originalLib.add(1, 2)).toBe(3);
+                expect(lookup).toBe(true);
+            });
+        });
     });
 }(describe, it, expect, Middleman));
