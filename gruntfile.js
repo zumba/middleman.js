@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             ' * <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n',
             ' * <%= pkg.description %>\n',
             ' *\n',
-            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n',
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> Zumba Fitness, LLC\n',
             ' * Licensed <%= pkg.license %>\n',
             ' */\n'
         ].join(''),
