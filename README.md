@@ -6,6 +6,11 @@ context.  With **Middleman.js** you can easily:
 * pipe one function's arguments to another function,
 * Overload a method to change how it works
 
+## Links
+* [Development version 0.1.0](https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.js) 2.27kb Uncompressed
+* [Production version 0.1.0](https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.min.js) 0.6kb Minified
+* [Unit tests](https://github.com/zumba/middleman.js/blob/master/test/spec/middleman.spec.js)
+
 ## Example
 You have added a third party library to your client code that has a method called `doSomethingCool`.
 ```javascript
