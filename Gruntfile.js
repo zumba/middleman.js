@@ -78,4 +78,7 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('default', ['clean', 'concat', 'jshint', 'uglify', 'jasmine']);
+
+    // Task for jenkins. Some machines have bad time with jshint
+    grunt.registerTask('jenkins', ['clean', 'concat', 'uglify', 'jasmine']);
 };
