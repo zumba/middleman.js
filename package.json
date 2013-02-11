@@ -9,7 +9,7 @@
       "email": "stephen.young@zumba.com"
     }
   ],
-  "main": null,
+  "main": "./dist/middleman-0.1.0.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/zumba/middleman.js"
