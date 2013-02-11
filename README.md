@@ -59,4 +59,4 @@ Middlman gets between Tony and your awesome application. ;)
      */
 ```
 
-Peice of cake.
+Piece of cake.
