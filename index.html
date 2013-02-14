@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Middleman.js by zumba</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Middleman.js</h1>
+        <p>A small library that lets you inject some code between a third party library and the execution context.</p>
+
+        <p class="view"><a href="https://github.com/zumba/middleman.js">View the Project on GitHub <small>zumba/middleman.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/zumba/middleman.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/zumba/middleman.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/zumba/middleman.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>With <strong>Middleman.js</strong> you can easily:</p>
+
+<ul>
+<li>filter arguments passed to an original method,</li>
+<li>pass one function's arguments to another function, or</li>
+<li>overload a third party method to change how it works</li>
+</ul><h2>Links</h2>
+
+<ul>
+<li>
+<a href="https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.js">Development version 0.1.0</a> <strong>2.27kb</strong> Uncompressed</li>
+<li>
+<a href="https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.min.js">Production version 0.1.0</a> <strong>0.6kb</strong> Minified</li>
+<li><a href="https://github.com/zumba/middleman.js/blob/master/test/spec/middleman.spec.js">Unit tests</a></li>
+</ul><h2>Example</h2>
+
+<p>Let's say you add a third party library to your application that has a method called <code>doSomethingCool</code>.</p>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ThirdPartyLibrary</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">doSomethingCool</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstParam</span><span class="p">,</span> <span class="nx">isAwesome</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// do something cool with firstParam, then:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">isAwesome</span><span class="p">){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'All up in your app, doing awesome things.'</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+</pre></div>
+
+<p>You decide that you want to force the second parameter <code>isAwesome</code> to be <code>true</code> every time
+<code>doSomethingCool</code> is called because your application is totally awesome.  You <em>could</em> just write a
+wrapper method like this:</p>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">AwesomeApplication</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">doSomethingCool</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstParam</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">ThirdPartyLibrary</span><span class="p">.</span><span class="nx">doSomethingCool</span><span class="p">(</span><span class="nx">firstParam</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">AwesomeApplication</span><span class="p">.</span><span class="nx">doSomethingCool</span><span class="p">(</span><span class="s1">'blah blah blah'</span><span class="p">);</span>
+    <span class="cm">/**</span>
+<span class="cm">     * console: All up in your app, doing awesome things.</span>
+<span class="cm">     */</span>
+</pre></div>
+
+<p>However, now you have to remember to call your method instead of the original method.
+What if <code>ThirdPartyLibrary</code> is very popular (e.g. jQuery)?  Your colleague Tony has been using
+<code>ThirdPartyLibrary</code> for years.  He doesn't remember to use your wrapper function when writing new
+code for your application.</p>
+
+<p><strong>Middlman.js</strong> gets between Tony and <code>ThirdPartyLibrary</code>, so your application stays awesome. <img class="emoji" title=":expressionless:" alt=":expressionless:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/expressionless.png" height="20" width="20" align="absmiddle"></p>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">MM</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Middleman</span><span class="p">();</span>
+
+    <span class="nx">MM</span><span class="p">.</span><span class="nx">map</span><span class="p">({</span>
+        <span class="nx">lib</span> <span class="o">:</span> <span class="nx">ThirdPartyLibrary</span><span class="p">,</span>
+        <span class="nx">method</span> <span class="o">:</span> <span class="s1">'doSomethingCool'</span><span class="p">,</span>
+        <span class="nx">filter</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// make the second parameter true</span>
+            <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">args</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">ThirdPartyLibrary</span><span class="p">.</span><span class="nx">doSomethingCool</span><span class="p">(</span><span class="s2">"I'm Tony, and the second param is undefined."</span><span class="p">);</span>
+    <span class="cm">/**</span>
+<span class="cm">     * console: All up in your app, doing awesome things.</span>
+<span class="cm">     */</span>
+</pre></div>
+
+<p>Piece of cake.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/zumba">zumba</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
