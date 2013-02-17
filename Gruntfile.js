@@ -81,4 +81,7 @@ module.exports = function(grunt) {
 
     // Task for jenkins. Some machines have bad time with jshint
     grunt.registerTask('jenkins', ['clean', 'concat', 'uglify', 'jasmine']);
+
+    // Public testing task for travis CI.
+    grunt.registerTask('travis', ['jasmine']);
 };

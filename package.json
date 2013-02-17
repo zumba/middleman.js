@@ -27,6 +27,9 @@
     "grunt-contrib-copy": "~0.3.2",
     "grunt-contrib-jshint": "~0.1.0"
   },
+  "scripts": {
+    "test": "grunt travis -v"
+  },
   "bundledDependencies": [],
   "license": "MIT"
 }

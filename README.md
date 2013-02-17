@@ -6,6 +6,8 @@ context.  With **Middleman.js** you can easily:
 * pass one function's arguments to another function, or
 * overload a third party method to change how it works
 
+[![Build Status](https://secure.travis-ci.org/zumba/middleman.js.png)](http://travis-ci.org/zumba/middleman.js)
+
 ## Links
 * [Development version 0.1.0](https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.js) **2.27kb** Uncompressed
 * [Production version 0.1.0](https://github.com/zumba/middleman.js/blob/master/dist/middleman-0.1.0.min.js) **0.6kb** Minified
